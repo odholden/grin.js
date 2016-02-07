@@ -28,12 +28,12 @@ Site.prototype.detectScroll = function() {
   this.checkSection();
   console.log(this.currentScroll, this.newScroll, this.currentSection);
   if (this.newScroll > this.currentScroll) {
-    $(window).scrollTop(this.currentScroll + $(window).height());
+    $(window).scrollTop((this.currentSection+1) * $(window).height());
   } else if (this.newScroll < this.currentScroll) {
-    $(window).scrollTop(this.currentScroll - $(window).height());
+    $(window).scrollTop((this.currentSection-1) * $(window).height());
   }
   this.currentScroll = this.newScroll;
-  setTimeout(this.setScrollListener.bind(this), 500);
+  setTimeout(this.setScrollListener.bind(this), 1000);
 }
 
 Site.prototype.checkSection = function() {
