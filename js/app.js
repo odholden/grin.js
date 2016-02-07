@@ -8,7 +8,7 @@ function init() {
     "Old Cars", "Australia", "Teaching", "Coding", "Theatre"]
   };
   var site = new Site(loops);
-  site.checkScroll();
+  site.setScrollListener();
   // loopText();
 }
 
@@ -19,8 +19,8 @@ function Site(loops) {
   this.newScroll = 0;
 }
 
-Site.prototype.checkScroll = function() {
-  $(window).on("scroll", this.detectScroll.bind(this));
+Site.prototype.setScrollListener = function() {
+  $(window).one("scroll", this.detectScroll.bind(this));
 }
 
 Site.prototype.detectScroll = function() {
@@ -29,17 +29,14 @@ Site.prototype.detectScroll = function() {
   console.log(this.currentScroll, this.newScroll, this.currentSection);
   if (this.newScroll > this.currentScroll) {
     $(window).scrollTop(this.currentScroll + $(window).height());
-  } else {
+  } else if (this.newScroll < this.currentScroll) {
     $(window).scrollTop(this.currentScroll - $(window).height());
   }
   this.currentScroll = this.newScroll;
+  setTimeout(this.setScrollListener.bind(this), 500);
 }
 
 Site.prototype.checkSection = function() {
   var windowRatio     = this.currentScroll / $(window).height();
   this.currentSection = Math.floor(windowRatio);
-}
-
-Site.prototype.scrollTo = function() {
-
 }
