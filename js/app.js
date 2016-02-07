@@ -13,9 +13,10 @@ function init() {
 }
 
 function Site(loops) {
-  this.loops         = loops;
+  this.loops = loops;
+  this.currentSection;
   this.currentScroll = 0;
-  this.newScroll;
+  this.newScroll = 0;
 }
 
 Site.prototype.checkScroll = function() {
@@ -24,10 +25,21 @@ Site.prototype.checkScroll = function() {
 
 Site.prototype.detectScroll = function() {
   this.newScroll = $(window).scrollTop();
+  this.checkSection();
+  console.log(this.currentScroll, this.newScroll, this.currentSection);
   if (this.newScroll > this.currentScroll) {
-    console.log("scroll down");
+    $(window).scrollTop(this.currentScroll + $(window).height());
   } else {
-    console.log("scroll up");
+    $(window).scrollTop(this.currentScroll - $(window).height());
   }
   this.currentScroll = this.newScroll;
+}
+
+Site.prototype.checkSection = function() {
+  var windowRatio     = this.currentScroll / $(window).height();
+  this.currentSection = Math.floor(windowRatio);
+}
+
+Site.prototype.scrollTo = function() {
+
 }
