@@ -1,41 +1,21 @@
-body {
+* {
+  box-sizing: border-box;
   font-family: "helvetica neue";
-  height: 100vh;
-  width: 100vw;
+}
+
+body {
+  height: 100%;
+  width: 100%;
 }
 
 ul {
-  border: 2px solid black;
-  margin: 5vw;
-  width: 90vw;
+  display: inline-block;
   list-style: none;
 }
 
-li.l, li.s, li.mv, li.mh {
-  border: 1px solid red;
+li {
   display: inline;
   float: left;
-  clear: none;
-  box-sizing: border-box;
-}
-
-li.s {
-  min-width: 30vw;
-  min-height: 30vw;
-}
-
-li.mh {
-  min-width: 30vw;
-  min-height: 60vw;
-}
-
-li.mv {
-  min-width: 60vw;
-  min-height: 30vw;
-}
-
-li.l {
-  min-width: 60vw;
-  min-height: 60vw;
+  border: 1px solid red;
 }
 
