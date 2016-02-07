@@ -1,21 +1,17 @@
-* {
-  box-sizing: border-box;
-  font-family: "helvetica neue";
-}
-
 body {
-  height: 100%;
-  width: 100%;
+  font-family: "Helvetica Neue";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-color: #BDBDBD;
+  color: white;
 }
 
-ul {
-  display: inline-block;
-  list-style: none;
+main {
+  margin: 4vw;
 }
 
-li {
-  display: inline;
-  float: left;
-  border: 1px solid red;
+h1 {
+  font-size: 5em;
+  font-weight: 600;
+  letter-spacing: -0.04em;
 }
-
