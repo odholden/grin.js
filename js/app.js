@@ -24,19 +24,27 @@ Site.prototype.setScrollListener = function() {
 }
 
 Site.prototype.detectScroll = function() {
-  this.newScroll = $(window).scrollTop();
   this.checkSection();
-  console.log(this.currentScroll, this.newScroll, this.currentSection);
-  if (this.newScroll > this.currentScroll) {
-    $(window).scrollTop((this.currentSection+1) * $(window).height());
-  } else if (this.newScroll < this.currentScroll) {
-    $(window).scrollTop((this.currentSection-1) * $(window).height());
-  }
-  this.currentScroll = this.newScroll;
+  setTimeout(function() {
+    this.newScroll = $(window).scrollTop();
+    if (this.newScroll > this.currentScroll) {
+      this.scrollTo(this.currentSection+1);
+    } else if (this.newScroll < this.currentScroll) {
+      this.scrollTo(this.currentSection-1);
+    }
+    console.log("current scroll ====== " + this.currentScroll);
+    console.log("new scroll ========== " + this.newScroll);
+    console.log("current section ===== " + this.currentSection);
+    this.currentScroll = this.newScroll;
+  }.bind(this), 100);
   setTimeout(this.setScrollListener.bind(this), 1000);
 }
 
 Site.prototype.checkSection = function() {
   var windowRatio     = this.currentScroll / $(window).height();
   this.currentSection = Math.floor(windowRatio);
+}
+
+Site.prototype.scrollTo = function(section) {
+  setTimeout($(window).scrollTop(section * $(window).height()).bind(this), 900);
 }
