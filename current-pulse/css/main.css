@@ -11,10 +11,28 @@ div {
   vertical-align: top;
   float: left;
 
-  margin: 5px;
-  border: 1px solid black;
+  margin: 15px;
   box-sizing: border-box;
 
   width: 200px;
   height: 200px;
+}
+
+div:nth-child(6n-1) {
+  background-color: #FF4d4d;
+}
+div:nth-child(6n-3) {
+  background-color: #ff894d;
+}
+div:nth-child(6n-5) {
+  background-color: #ffd34d;
+}
+div:nth-child(6n-4) {
+  background-color: #4AF08E;
+}
+div:nth-child(6n-2) {
+  background-color: #4dadff;
+}
+div:nth-child(6n) {
+  background-color: #a44dff;
 }
